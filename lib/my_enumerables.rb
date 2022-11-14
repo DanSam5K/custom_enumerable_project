@@ -68,6 +68,22 @@ module Enumerable
     end
     result
   end
+
+  def my_inject(initial_value = nil)
+    if initial_value
+      result = initial_value
+      self.my_each do |item|
+        result = yield(result, item)
+      end
+      result
+    else
+      result = self[0]
+      self[1..-1].my_each do |item|
+        result = yield(result, item)
+      end
+    end
+    result
+  end
 end
 
 # You will first have to define my_each
