@@ -36,6 +36,30 @@ module Enumerable
     true
   end
 
+  def my_count
+    if block_given?
+      count = 0
+      self.my_each  do |item|
+        count += 1 if yield(item)
+      end
+      count
+    else
+      self.length
+    end
+  end
+  
+
+  #Version 2 of my_ocunt
+
+  # def my_count
+  #   return self.size if !block_given?
+
+  #   count = 0
+  #   self.my_each do |item|
+  #     count += 1 if yield(item)
+  #   end
+  #   count
+  # end
 end
 
 # You will first have to define my_each
