@@ -7,6 +7,13 @@ module Enumerable
     self
   end
 
+  def my_select
+    result = []
+    self.my_each do |item|
+      result << item if yield(item)
+    end
+    result
+  end
   
 end
 
